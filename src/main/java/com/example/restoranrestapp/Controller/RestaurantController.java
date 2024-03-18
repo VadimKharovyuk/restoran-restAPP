@@ -24,6 +24,7 @@ public class RestaurantController {
     public String vievResporaunt(@PathVariable (name = "id") Long id, Model model){
         var restorant = restorationRepository.findById(id).orElseThrow();
         model.addAttribute("restaurant" ,restorant);
+
         return "restoraunt-viev";
 
     }
