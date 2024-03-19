@@ -1,0 +1,9 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: restoranAppiRest
+    environment:
+      POSTGRES_PASSWORD: 19111993
+    ports:
+      - "5432:5432"
