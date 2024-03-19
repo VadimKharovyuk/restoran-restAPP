@@ -38,4 +38,21 @@ public class RestaurantController {
         return "restoraunt-viev";
     }
 
+    @GetMapping("/{id}/create-menu-item")
+    public String craeteMenuItem(@PathVariable (name = "id") Long id ,Model model){
+        var menuItem= new MenuItem();
+        menuItem.setRestaurantId(id);
+        model.addAttribute("menuItem", menuItem);
+        return "create-menu-item-view";
+    }
+    @PostMapping("/menu-item/save")
+    public String saveItem(@ModelAttribute MenuItem menuItem ,Model model){
+      var restaurant =  restorationRepository.findById(menuItem.getRestaurantId()).orElseThrow();
+      restaurant.getMenuItems().add(menuItem);
+      restaurant =restorationRepository.save(restaurant);
+      model.addAttribute("restaurant",restaurant);
+        return "restoraunt-viev";
+
+    }
+
 }

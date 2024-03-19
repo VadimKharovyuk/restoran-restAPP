@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Restaurant</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Create Restaurant</h1>
+    <form action="#" method="post" th:action="@{/restaurants/menu-item/save}"  th:object="${menuItem}">
+        <fieldset>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" id="name" th:field="${menuItem.name}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input class="form-control" id="description" th:field="${menuItem.description}">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input class="form-control" id="price" th:field="${menuItem.price}">
+            </div>
+            <input type="hidden"  th:field="${menuItem.restaurantId}"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
