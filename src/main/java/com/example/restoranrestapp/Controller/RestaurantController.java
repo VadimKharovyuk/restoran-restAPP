@@ -6,9 +6,7 @@ import com.example.restoranrestapp.Repository.RestorationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,6 +24,18 @@ public class RestaurantController {
         model.addAttribute("restaurant" ,restorant);
         return "restoraunt-viev";
 
+    }
+    @GetMapping("/create")
+    public String vievCreateREstoraunt(Model model){
+        model.addAttribute("restaurant", new Restaurant());
+        return "create-restaurant-view";
+
+    }
+    @PostMapping("/save")
+    public String saveRestoraunt(@ModelAttribute Restaurant restaurant ,Model model){
+      var saveResporaunt =  restorationRepository.save(restaurant);
+      model.addAttribute("restaurant",saveResporaunt);
+        return "restoraunt-viev";
     }
 
 }
